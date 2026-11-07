@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuynShop — Telegram Stars</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#080d18;color:white;
+ font-family:Arial,sans-serif;min-height:100vh;
+ display:flex;justify-content:center;align-items:center;
+ padding:20px;
+}
+.container{width:100%;max-width:440px}
+.logo{text-align:center;margin-bottom:30px}
+.logo-icon{
+ width:65px;height:65px;border-radius:22px;
+ background:linear-gradient(135deg,#229ed9,#1769c2);
+ display:grid;place-items:center;font-size:32px;
+ margin:auto auto 12px;
+ box-shadow:0 0 35px #229ed955;
+}
+h1{margin:0;font-size:29px}
+.subtitle{color:#8996aa;margin-top:8px;font-size:14px}
+.card{
+ background:#111a2a;border:1px solid #24334a;
+ border-radius:22px;padding:23px;
+}
+h2{font-size:19px;margin:0 0 18px}
+.products{
+ display:grid;grid-template-columns:1fr 1fr;gap:12px;
+}
+.product{
+ background:#182438;border:1px solid #2b3b54;
+ color:white;border-radius:15px;padding:17px 10px;
+ cursor:pointer;text-align:center;
+ transition:.2s;
+}
+.product.active{
+ border:1px solid #229ed9;
+ background:#16304a;
+ box-shadow:0 0 15px #229ed933;
+}
+.amount{font-size:22px;font-weight:bold}
+.price{color:#91a5bd;margin-top:7px;font-size:14px}
+.total{
+ background:#182438;border-radius:15px;
+ padding:17px;margin-top:20px;
+ display:flex;justify-content:space-between;align-items:center;
+}
+.total span{color:#9aabc0}
+.total strong{font-size:25px;color:#55c5ff}
+button{
+ width:100%;border:0;border-radius:14px;
+ padding:17px;margin-top:17px;
+ background:linear-gradient(100deg,#229ed9,#1676c5);
+ color:white;font-size:16px;font-weight:bold;
+ cursor:pointer;
+}
+button:active{transform:scale(.98)}
+.note{text-align:center;color:#718096;font-size:12px;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="container">
+ <div class="logo">
+  <div class="logo-icon">⭐</div>
+  <h1>BuynShop</h1>
+  <div class="subtitle">Покупка Telegram Stars</div>
+ </div>
+
+ <div class="card">
+  <h2>Выбери количество ⭐</h2>
+  <div class="products">
+   <div class="product active" onclick="choose(50,81,this)">
+    <div class="amount">50 ⭐</div><div class="price">81 ₽</div>
+   </div>
+   <div class="product" onclick="choose(100,181.99,this)">
+    <div class="amount">100 ⭐</div><div class="price">181,99 ₽</div>
+   </div>
+   <div class="product" onclick="choose(250,429,this)">
+    <div class="amount">250 ⭐</div><div class="price">429 ₽</div>
+   </div>
+   <div class="product" onclick="choose(500,840,this)">
+    <div class="amount">500 ⭐</div><div class="price">840 ₽</div>
+   </div>
+   <div class="product" onclick="choose(1000,1679,this)">
+    <div class="amount">1000 ⭐</div><div class="price">1679 ₽</div>
+   </div>
+   <div class="product" onclick="choose(2500,4199,this)">
+    <div class="amount">2500 ⭐</div><div class="price">4199 ₽</div>
+   </div>
+  </div>
+
+  <div class="total">
+   <span>Итого к оплате</span>
+   <strong id="total">81 ₽</strong>
+  </div>
+
+  <button onclick="continueToBot()">⭐ Продолжить в Telegram</button>
+  <div class="note">BuynShop · Поддержка покупателей</div>
+ </div>
+</div>
+
+<script>
+let selected = 50;
+function choose(amount,price,element){
+ selected=amount;
+ document.querySelectorAll('.product').forEach(p=>p.classList.remove('active'));
+ element.classList.add('active');
+ document.getElementById('total').textContent=
+  price.toLocaleString('ru-RU')+' ₽';
+}
+function continueToBot(){
+ alert('Следующий этап — подключение выбранного товара к Telegram-боту.');
+}
+</script>
+</body>
+</html>
